@@ -69,8 +69,6 @@ struct CompetitionsListView: View {
                                 TermsOfUseView()
                             }
                         }
-//                        ToolbarItem(placement: .navigationBarTrailing) {
-//                            Toggle("Hide canceled", isOn: $hiddenCanceled)
                     }
                 }
             }

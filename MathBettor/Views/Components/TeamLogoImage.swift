@@ -16,18 +16,18 @@ struct TeamLogoImage: View {
             case .success(let image):
                 image
                     .resizable()
-                    .frame(width: 40, height: 40)
+//                    .frame(width: 30, height: 30)
                     .cornerRadius(10)
                     .shadow(radius: 10)
             case .empty:
                 ProgressView()
-                    .frame(width: 40, height: 40)
+//                    .frame(width: 30, height: 30)
             case .failure:
                 Image(systemName: "xmark.shield")
-                    .frame(width: 40, height: 40)
+//                    .frame(width: 30, height: 30)
             @unknown default:
                 Image(systemName: "xmark.shield")
-                    .frame(width: 40, height: 40)
+//                    .frame(width: 30, height: 30)
             }
         }
     }

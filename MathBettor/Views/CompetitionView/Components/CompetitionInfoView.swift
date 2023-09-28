@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CompetitionInfoView: View {
+    @State private var showAbout = false
     let imageURL: String
     let competitionCountry: String
     let competitionName: String
@@ -18,13 +19,6 @@ struct CompetitionInfoView: View {
                 Color.backgroundGradient
                 VStack {
                     Spacer()
-                    CompetitionImage(
-                        imageURL: imageURL,
-                        imageSize: CGSize(width: 180, height: 180),
-                        cornerRadius: 10,
-                        shadowIsOn: true
-                    )
-                    .padding(.top)
                     Text(competitionCountry)
                     Text(competitionName)
                         .font(.largeTitle)
@@ -33,16 +27,28 @@ struct CompetitionInfoView: View {
                         .padding(.bottom, 16.0)
                 }
                 .bold()
-                .foregroundColor(.white)
+                .foregroundColor(.black)
             }
             .cornerRadius(20)
             .ignoresSafeArea()
+            .toolbar {
+                ToolbarItem {
+                    Button(action: {
+                        self.showAbout.toggle()
+                    }) {
+                        Image(systemName: "info.circle")
+                    }
+                    .sheet(isPresented: $showAbout) {
+                        TermsOfUseView()
+                    }
+                }
+            }
         }
     }
 }
 
 struct CompetitionInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        CompetitionInfoView(imageURL: "", competitionCountry: "name Country", competitionName: "competition nme")
+        CompetitionInfoView(imageURL: "", competitionCountry: "name Country", competitionName: "competition name")
     }
 }

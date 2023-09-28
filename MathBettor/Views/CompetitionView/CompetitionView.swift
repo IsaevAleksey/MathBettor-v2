@@ -41,6 +41,7 @@ struct CompetitionView: View {
                     .listStyle(.automatic)
                 }
             }
+            .ignoresSafeArea()
             .background(Color(.systemGroupedBackground))
             .task {
                 if viewModel.rows.isEmpty {
