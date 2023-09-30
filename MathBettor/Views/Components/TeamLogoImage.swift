@@ -19,14 +19,21 @@ struct TeamLogoImage: View {
 //                    .frame(width: 30, height: 30)
                     .cornerRadius(10)
                     .shadow(radius: 10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
             case .empty:
                 ProgressView()
 //                    .frame(width: 30, height: 30)
             case .failure:
                 Image(systemName: "xmark.shield")
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
 //                    .frame(width: 30, height: 30)
             @unknown default:
                 Image(systemName: "xmark.shield")
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
 //                    .frame(width: 30, height: 30)
             }
         }

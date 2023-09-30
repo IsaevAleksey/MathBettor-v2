@@ -19,7 +19,7 @@ struct FixtureView: View {
                     homeTeamName: viewModel.homeTeamName,
                     awayTeamName: viewModel.awayTeamName,
                     fixtureDate: viewModel.fixtureDate)
-                        .frame(height: geometry.size.height / 3)
+                .frame(height: geometry.size.height / 3.5)
                         .task {
                             if viewModel.comparisonViewModel.isEmpty {
                                 await viewModel.fetchStatistics(fixtureID: viewModel.fixtureID)

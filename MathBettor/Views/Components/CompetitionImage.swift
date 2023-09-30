@@ -10,8 +10,8 @@ import SwiftUI
 struct CompetitionImage: View {
     let imageURL: String
     let imageSize: CGSize
-    let cornerRadius: CGFloat
-    let shadowIsOn: Bool
+//    let cornerRadius: CGFloat
+//    let shadowIsOn: Bool
         
     var body: some View {
         CacheAsyncImage(imageURL: imageURL) { phase in
@@ -20,17 +20,24 @@ struct CompetitionImage: View {
                 image
                     .resizable()
                     .frame(width: imageSize.width, height: imageSize.height)
-                    .cornerRadius(cornerRadius)
-                    .shadow(radius: shadowIsOn ? 10 : 0)
+                    .cornerRadius(5)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.black, lineWidth: 1))
+                    .shadow(radius: 10)
             case .empty:
                 ProgressView()
                     .frame(width: imageSize.width, height: imageSize.height)
             case .failure:
                 Image(systemName: "xmark.shield")
                     .frame(width: imageSize.width, height: imageSize.height)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.black, lineWidth: 1))
+                    .cornerRadius(5)
+                    .shadow(radius: 10)
             @unknown default:
                 Image(systemName: "xmark.shield")
                     .frame(width: imageSize.width, height: imageSize.height)
+                    .cornerRadius(5)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.black, lineWidth: 1))
+                    .shadow(radius: 10)
             }
         }
     }
@@ -38,6 +45,6 @@ struct CompetitionImage: View {
 
 struct CompetitionImage_Previews: PreviewProvider {
     static var previews: some View {
-        CompetitionImage(imageURL: "", imageSize: CGSize(width: 150, height: 150), cornerRadius: 30, shadowIsOn: true)
+        CompetitionImage(imageURL: "", imageSize: CGSize(width: 150, height: 150))
     }
 }

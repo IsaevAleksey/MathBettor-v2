@@ -17,7 +17,6 @@ struct HelloView: View {
                     .ignoresSafeArea()
                 VStack(spacing: 20.0) {
                     Image("warningText")
-
                     Button(action: {
                         self.showCompetitionsList.toggle()
                     }) {

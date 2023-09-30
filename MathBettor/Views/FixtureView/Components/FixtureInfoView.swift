@@ -18,46 +18,46 @@ struct FixtureInfoView: View {
     
     
     var body: some View {
-        ZStack {
-            Color.backgroundGradient
-            VStack(spacing: 8.0) {
-                Spacer()
-                HStack(alignment: .top, spacing: 100.0) {
-                    VStack {
-                        TeamLogoImage(teamLogoURL: homeTeamLogoURL)
-                            .frame(width: 40, height: 40)
+        GeometryReader { geometry in
+            ZStack {
+                Color.backgroundGradient
+                VStack(spacing: 8.0) {
+                    Spacer()
+                    HStack(alignment: .top) {
                         Text(homeTeamName)
                             .multilineTextAlignment(.center)
-                    }
-                    VStack {
-                        TeamLogoImage(teamLogoURL: awayTeamLogoURL)
-                            .frame(width: 40, height: 40)
+                            .frame(width: geometry.size.width / 3)
+                            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 2))
+
+                        Spacer()
                         Text(awayTeamName)
                             .multilineTextAlignment(.center)
+                            .frame(width: geometry.size.width / 3)
+                            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 2))
+                    }
+                    .padding(.horizontal, 16.0)
+                    Text(fixtureDate)
+                        .fontWeight(.thin)
+                        .padding(.bottom)
+                }
+                .bold()
+                .foregroundColor(.white)
+            }
+            .toolbar {
+                ToolbarItem {
+                    Button(action: {
+                        self.showAbout.toggle()
+                    }) {
+                        Image(systemName: "info.circle")
+                    }
+                    .sheet(isPresented: $showAbout) {
+                        TermsOfUseView()
                     }
                 }
-                .padding(.horizontal, 16.0)
-                Text(fixtureDate)
-                    .fontWeight(.thin)
-                    .padding(.bottom)
             }
-            .bold()
-            .foregroundColor(.white)
-        }
-        .toolbar {
-            ToolbarItem {
-                Button(action: {
-                    self.showAbout.toggle()
-                }) {
-                    Image(systemName: "info.circle")
-                }
-                .sheet(isPresented: $showAbout) {
-                    TermsOfUseView()
-                }
-            }
-        }
-        .cornerRadius(20)
+            .cornerRadius(20)
         .ignoresSafeArea()
+        }
     }
 }
 

@@ -16,13 +16,14 @@ struct CompetitionRow: View {
         HStack(spacing: 16.0) {
             CompetitionImage(
                 imageURL: competitionImageURL,
-                imageSize: CGSize(width: 40, height: 40),
-                cornerRadius: 10, shadowIsOn: false
+                imageSize: CGSize(width: 15, height: 15)
             )
             VStack(alignment: .leading) {
                 Text(competitionCountry)
+                    .font(.system(size: 14))
                     .fontWeight(.ultraLight)
                 Text(competitionName)
+                    .font(.system(size: 14))
             }
         }
     }
