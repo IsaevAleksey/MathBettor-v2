@@ -11,6 +11,7 @@ struct ComparisonRow: View {
     let parametr: String
     let homeTeamParametrValue: String
     let awayTeamParametrValue: String
+    
 
     var roundHomeParametrValue: Float {
         let roundValue = roundf(NSString(string: homeTeamParametrValue).floatValue)

@@ -20,6 +20,8 @@
 		932F0E412A1FC3280005F994 /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932F0E402A1FC3280005F994 /* PredictionView.swift */; };
 		932F0E442A1FC37C0005F994 /* PredictionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932F0E432A1FC37C0005F994 /* PredictionViewModel.swift */; };
 		93381A2F2AC3588600512B53 /* TermsOfUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381A2E2AC3588600512B53 /* TermsOfUseView.swift */; };
+		935328D02B7A6D0800559583 /* Odds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935328CF2B7A6D0800559583 /* Odds.swift */; };
+		935328D22B7A759D00559583 /* OddsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935328D12B7A759D00559583 /* OddsView.swift */; };
 		9359C95C2A26558F000308F5 /* ComparisonAndPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359C95B2A26558F000308F5 /* ComparisonAndPrediction.swift */; };
 		9359C9602A265E86000308F5 /* GamesStatisticsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359C95F2A265E86000308F5 /* GamesStatisticsRow.swift */; };
 		9359C9632A27A9B4000308F5 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359C9622A27A9B4000308F5 /* StatisticsView.swift */; };
@@ -60,6 +62,8 @@
 		932F0E402A1FC3280005F994 /* PredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
 		932F0E432A1FC37C0005F994 /* PredictionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionViewModel.swift; sourceTree = "<group>"; };
 		93381A2E2AC3588600512B53 /* TermsOfUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseView.swift; sourceTree = "<group>"; };
+		935328CF2B7A6D0800559583 /* Odds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Odds.swift; sourceTree = "<group>"; };
+		935328D12B7A759D00559583 /* OddsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddsView.swift; sourceTree = "<group>"; };
 		9359C95B2A26558F000308F5 /* ComparisonAndPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonAndPrediction.swift; sourceTree = "<group>"; };
 		9359C95F2A265E86000308F5 /* GamesStatisticsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesStatisticsRow.swift; sourceTree = "<group>"; };
 		9359C9622A27A9B4000308F5 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				930AB2AC2A04185C00BFF3FA /* StatisticsData.swift */,
 				9359C95B2A26558F000308F5 /* ComparisonAndPrediction.swift */,
 				935EE8C22A251E69000D8157 /* TeamsStats.swift */,
+				935328CF2B7A6D0800559583 /* Odds.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 		93FF36CF2A40BD5E00F24B09 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				935328D12B7A759D00559583 /* OddsView.swift */,
 				932F0E3E2A1E87700005F994 /* CircularProgressBarView.swift */,
 				93E631B22A2E4BAC00E3F90B /* GridItemView.swift */,
 			);
@@ -394,6 +400,7 @@
 				93381A2F2AC3588600512B53 /* TermsOfUseView.swift in Sources */,
 				93E36BED2A38D45000914717 /* CacheAsyncImage.swift in Sources */,
 				939A5DD529F6EEC5005DDA83 /* NetworkManager.swift in Sources */,
+				935328D22B7A759D00559583 /* OddsView.swift in Sources */,
 				9359C9602A265E86000308F5 /* GamesStatisticsRow.swift in Sources */,
 				938D6C402A0D613B002854DC /* FixtureViewModel.swift in Sources */,
 				938D6C4B2A1900A0002854DC /* ComparisonRow.swift in Sources */,
@@ -415,6 +422,7 @@
 				930AB2AF2A043FA200BFF3FA /* CompetitionRow.swift in Sources */,
 				939A5DD129F6ED62005DDA83 /* CompetitionsListView.swift in Sources */,
 				935EE8B02A2203C2000D8157 /* ImageCacheManager.swift in Sources */,
+				935328D02B7A6D0800559583 /* Odds.swift in Sources */,
 				930AB2A92A0414F500BFF3FA /* CompetitionViewModel.swift in Sources */,
 				938D6C3D2A0D60ED002854DC /* FixtureView.swift in Sources */,
 				930AB2AB2A04181400BFF3FA /* Fixture.swift in Sources */,

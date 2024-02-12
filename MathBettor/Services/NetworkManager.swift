@@ -71,6 +71,23 @@ final class NetworkManager {
         }
         return statistics
     }
+    
+    func fetchOdds(fixtureID: Int) async throws  -> OddsData {
+        var request = URLRequest(
+            url: URL(string: "https://v3.football.api-sports.io/odds?fixture=\(fixtureID)")!,
+            timeoutInterval: 10.0)
+        request.addValue("2d3297ddd732374c7f607d900b0d9c69", forHTTPHeaderField: "x-rapidapi-key")
+        request.addValue("v3.football.api-sports.io", forHTTPHeaderField: "x-rapidapi-host")
+        request.httpMethod = "GET"
+        
+        guard let (data, _) = try? await URLSession.shared.data(for: request) else {
+            throw NetworkError.noData
+        }
+        guard let oddsData = try? JSONDecoder().decode(OddsData.self, from: data) else {
+            throw NetworkError.decodingError
+        }
+        return oddsData
+    }
 }
 
 

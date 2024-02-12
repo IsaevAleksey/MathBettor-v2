@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PredictionView: View {
     @StateObject var viewModel: PredictionViewModel
+    @State private var showOdds = false
     private let column = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -33,6 +34,26 @@ struct PredictionView: View {
                     Text("WIN AWAY")
                     CircularProgressBarView(value: viewModel.probabilityWinAndDraw.away)
                 }
+            }
+            .task {
+                await viewModel.fetchOdds(fixtureID: viewModel.fixtureID)
+            }
+            Button(action: {
+                self.showOdds.toggle()
+            }) {
+                ZStack {
+                    Color.backgroundGradient
+                        .clipShape(Rectangle())
+                        .frame(width: 110, height: 50)
+                        .cornerRadius(10)
+                    Text("Show Odds")
+                        .foregroundColor(Color.white)
+                }
+                .shadow(radius: 10)
+
+            }
+            .sheet(isPresented: $showOdds) {
+                OddsView(bookmakers: viewModel.bookmakers.map {$0})
             }
             Text("Advice: \(viewModel.advice)")
                 .bold()
@@ -60,6 +81,6 @@ struct PredictionView: View {
 
 struct PredictionTabView_Previews: PreviewProvider {
     static var previews: some View {
-        PredictionView(viewModel: PredictionViewModel(statisticsInfo: StatisticsInfo(predictions: Prediction(advice: "adviceadviceadviceadviceadviceadviceadvice", percent: Percent(home: "20%", draw: "30%", away: "50%")), comparison: Comparison(form: TeamComparisonValue(home: "20", away: "10"), att: TeamComparisonValue(home: "30", away: "45"), def: TeamComparisonValue(home: "30", away: "60"), poissonDistribution: TeamComparisonValue(home: "25", away: "70"), h2h: TeamComparisonValue(home: "30", away: "40"), total: TeamComparisonValue(home: "50", away: "70")), teams: TeamsStats(home: TeamStats(id: 55, league: Stats(fixtures: Games(played: Value(total: 5), wins: Value(total: 5), draws: Value(total: 4), loses: Value(total: 2)), goals: Goals(scored: GoalsValue(total: Value(total: 40), average: AverageValue(total: "5.4")), сonceded: GoalsValue(total: Value(total: 20), average: AverageValue(total: "1.5"))))), away: TeamStats(id: 55, league: Stats(fixtures: Games(played: Value(total: 5), wins: Value(total: 6), draws: Value(total: 3), loses: Value(total: 3)), goals: Goals(scored: GoalsValue(total: Value(total: 25), average: AverageValue(total: "1.1")), сonceded: GoalsValue(total: Value(total: 41), average: AverageValue(total: "3.6")))))))))
+        PredictionView(viewModel: PredictionViewModel(statisticsInfo: StatisticsInfo(predictions: Prediction(advice: "adviceadviceadviceadviceadviceadviceadvice", percent: Percent(home: "20%", draw: "30%", away: "50%")), comparison: Comparison(form: TeamComparisonValue(home: "20", away: "10"), att: TeamComparisonValue(home: "30", away: "45"), def: TeamComparisonValue(home: "30", away: "60"), poissonDistribution: TeamComparisonValue(home: "25", away: "70"), h2h: TeamComparisonValue(home: "30", away: "40"), total: TeamComparisonValue(home: "50", away: "70")), teams: TeamsStats(home: TeamStats(id: 55, league: Stats(fixtures: Games(played: Value(total: 5), wins: Value(total: 5), draws: Value(total: 4), loses: Value(total: 2)), goals: Goals(scored: GoalsValue(total: Value(total: 40), average: AverageValue(total: "5.4")), сonceded: GoalsValue(total: Value(total: 20), average: AverageValue(total: "1.5"))))), away: TeamStats(id: 55, league: Stats(fixtures: Games(played: Value(total: 5), wins: Value(total: 6), draws: Value(total: 3), loses: Value(total: 3)), goals: Goals(scored: GoalsValue(total: Value(total: 25), average: AverageValue(total: "1.1")), сonceded: GoalsValue(total: Value(total: 41), average: AverageValue(total: "3.6"))))))), fixtureID: 2))
     }
 }

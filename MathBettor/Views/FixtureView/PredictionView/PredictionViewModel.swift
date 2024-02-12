@@ -8,6 +8,8 @@
 import Foundation
 
 class PredictionViewModel: ObservableObject {
+    
+    var bookmakers: [Bookmaker] = []
         
     var probabilityWinAndDraw: Percent {
         statisticsInfo.predictions.percent
@@ -56,10 +58,13 @@ class PredictionViewModel: ObservableObject {
     
     //MARK: init
     private let statisticsInfo: StatisticsInfo
+    let fixtureID: Int
 
-    init(statisticsInfo: StatisticsInfo) {
+    init(statisticsInfo: StatisticsInfo, fixtureID: Int) {
         self.statisticsInfo = statisticsInfo
+        self.fixtureID = fixtureID
     }
+    
     
     // MARK: calculation of probabilities
     private func teamGoalExpectancy(
@@ -114,6 +119,17 @@ class PredictionViewModel: ObservableObject {
             return 1
         } else {
             return Double(n) * factorial(n - 1)
+        }
+    }
+    
+    @MainActor func fetchOdds(fixtureID: Int) async {
+        do {
+            let odds = try await NetworkManager.shared.fetchOdds(fixtureID: fixtureID).response
+            bookmakers = odds.map {$0.bookmakers}
+//            let bookmakes = odds.map {$0.bookmakers}
+        }
+        catch {
+            print(error)
         }
     }
 }

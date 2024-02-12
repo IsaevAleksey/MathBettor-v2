@@ -24,6 +24,8 @@ struct FixtureView: View {
                             if viewModel.comparisonViewModel.isEmpty {
                                 await viewModel.fetchStatistics(fixtureID: viewModel.fixtureID)
 //                                print("загражуем прогноз")
+//                                await viewModel.fetchOdds(fixtureID: viewModel.fixtureID)
+//                                print("загружаем кэф")
                                 }
                             }
                 if viewModel.comparisonViewModel.isEmpty {
